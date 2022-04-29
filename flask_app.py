@@ -42,12 +42,23 @@ def home():
 def predict():
     if request.method == 'POST':
         image = request.files['image']
-        image.save('to_pred.jpg', int(2e+6))
-        output = model_ex.average_confidence('to_pred.jpg')
-        os.remove('to_pred.jpg')
-        return render_template('predict.html', output=f'OUTPUT: {output}')
+        filename = image.filename
+        extension = filename.split('.')
+        try:
+            if extension[1] in ['jpeg', 'jpg', 'png']:
+                image.save('to_pred.jpg', int(2e+6))
+                output = model_ex.average_confidence('to_pred.jpg')
+                os.remove('to_pred.jpg')
+                return render_template('predict.html', output=f'OUTPUT: {output}')
+            else:
+                output = 'Invalid file format'
+                return render_template('predict.html', output=f'OUTPUT: {output}')
+        except IndexError:
+            output = 'Invalid file format'
+            return render_template('predict.html', output=f'OUTPUT: {output}')
     else:
         return home()
 
 
-app.run()
+if __name__ == "__main__":
+    app.run()

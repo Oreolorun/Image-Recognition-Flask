@@ -1,2 +1,2 @@
 # Image Recognition Flask
-This repo is setup as a Flask app deployment repository for the Image-Recognition project. 
+This repo is setup as a Flask app deployment repository for the [Image-Recognition project](https://github.com/Oreolorun/Image-Recognition). You can check out the Flask app [here](https://car-classifier-flask.herokuapp.com/), if you are interested in the Streamlit app instead, that can be found [here](https://share.streamlit.io/oreolorun/image-recognition/main/data_app.py)
